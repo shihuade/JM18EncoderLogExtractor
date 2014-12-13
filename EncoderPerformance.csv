@@ -1,12 +1,18 @@
- ,  ,PPT_simpleSmall_1024x768_noDuplicate , Bit_R ,EcodeT
- ,  ,22,0,0
- ,  ,27,0,0
- ,  ,32,0,0
- ,  ,37,0,0
 
- ,  ,wbxtracer_auto_scroll_1440x912_cut , Bit_R ,EcodeT
- ,  ,22,1024.38,9.24359
- ,  ,27,711.48,9.03085
- ,  ,32,522.58,8.70235
- ,  ,37,371.64,9.67546
+TestDate is:, Sat Dec 13 22:51:49 CST 2014
 
+, ,PPT_simpleSmall_1024x768_noDuplicate,Bit_R,PSNR_Y,Enc_Time,EncFPS
+, ,22,NULL,NULL,,NULL
+, ,27,NULL,NULL,,NULL
+, ,32,NULL,NULL,,NULL
+, ,37,NULL,NULL,,NULL
+, ,Switch_share_sample_b_1024x768_noDuplicate,Bit_R,PSNR_Y,Enc_Time,EncFPS
+, ,22,NULL,NULL,,NULL
+, ,27,NULL,NULL,,NULL
+, ,32,NULL,NULL,,NULL
+, ,37,NULL,NULL,,NULL
+, ,wbxtracer_auto_scroll_1440x912_cut,Bit_R,PSNR_Y,Enc_Time,EncFPS
+, ,22,NULL,NULL,,NULL
+, ,27,NULL,NULL,,NULL
+, ,32,NULL,NULL,,NULL
+, ,37,NULL,NULL,,NULL
