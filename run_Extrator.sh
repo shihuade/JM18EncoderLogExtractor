@@ -18,10 +18,55 @@ runGlobalVaribalInitial()
     cd ${CurrentDir}
 }
 
+runCheckNewSequence()
+{
+	if [ ! $# -eq 1 ]
+	then
+		echo "runCheckNewSequence \${SequenceName}"
+		return 1
+	fi		
+		
+	local SequenceName=$1
+	let "bNewSequenceFlag=1"
+
+	local SequenceNum=${#aSequenceList[@]}
+	for sequence in ${aSequenceList[@]}
+	do
+		if [ "${sequence}" = "${SequenceName}" ]
+		then
+			let "bNewSequenceFlag=0"
+		fi
+	done
+
+	if [ ${bNewSequenceFlag} -eq 1 ]
+	then
+		aSequenceList[${SequenceNum}]=${SequenceName}
+		SequenceNum=${#aSequenceList[@]}
+		echo ""
+		echo ""
+		echo "SequenceNum   is ${SequenceNum}"
+		echo "aSequenceList is ${aSequenceList[@]}"
+	fi
+
+	return 0
+}
+
+
 runGetSequenceList()
 {
+	local FileName=""
+	local SequenceName=""
+	local TempData=""
+	for file in ${DataFolder}/*.dat
+	do
+		FileName=`echo $file | awk 'BEGIN {FS="/"} {print $NF}'`
+		TempData=`echo $FileName | awk 'BEGIN {FS="_"} {print $NF}'`
+		SequenceName=`echo $FileName | awk 'BEGIN {FS="_'${TempData}'"} {print $1}'`
+		
+		runCheckNewSequence  ${SequenceName}
 
-for file in ${}
+
+	done
 
 
 }
@@ -34,8 +79,7 @@ runCheck()
         echo "data folder does not exit,please double checkeck!"
         echo ""
         exit 1
-    else
-
+    fi
 }
 
 
@@ -54,14 +98,15 @@ runMain()
     DataFolder=$1
     runCheck
     runGlobalVaribalInitial
-
+	
+	runGetSequenceList
 
 
 
 }
 
 BataFolder=$1
-
+runMain ${BataFolder}
 
 
 
