@@ -1,0 +1,106 @@
+Setting Default Parameters...
+Parsing Configfile encoder.cfg....................................................................................................................................................................................................................................................................................................................................................................................................................
+Parsing Configfile encoder.cfg....................................................................................................................................................................................................................................................................................................................................................................................................................
+Parsing command line string 'InputFile = D:\Sequence\no_duplicate_content\PPT_simpleSmall_1024x768_noDuplicate.yuv'.
+Parsing command line string 'SourceWidth = 1024'.
+Parsing command line string 'SourceHeight = 768'.
+Parsing command line string 'OutputWidth = 1024'.
+Parsing command line string 'OutputHeight = 768'.
+Parsing command line string 'ReconFile = ..\str\test_rec.yuv'.
+Parsing command line string 'OutputFile = ..\str\test_PPT_simpleSmall_1024x768_noDuplicate_32.264'.
+Parsing command line string 'QPISlice = 32'.
+Parsing command line string 'QPPSlice = 32'.
+Parsing command line string ''
+
+------------------------------- JM 18.5 (FRExt) -------------------------------
+ Input YUV file                    : D:\Sequence\no_duplicate_content\PPT_simpleSmall_1024x768_noDuplicate.yuv 
+ Output H.264 bitstream            : ..\str\test_PPT_simpleSmall_1024x768_noDuplicate_32.264 
+ Output YUV file                   : ..\str\test_rec.yuv 
+ YUV Format                        : YUV 4:2:0 
+ Frames to be encoded              : 19
+ Freq. for encoded bitstream       : 30.00
+ PicInterlace / MbInterlace        : 0/0
+ Transform8x8Mode                  : 1
+ ME Metric for Refinement Level 0  : SAD
+ ME Metric for Refinement Level 1  : Hadamard SAD
+ ME Metric for Refinement Level 2  : Hadamard SAD
+ Mode Decision Metric              : Hadamard SAD
+ Motion Estimation for components  : Y
+ Image format                      : 1024x768 (1024x768)
+ Error robustness                  : Off
+ Search range                      : 32
+ Total number of references        : 5
+ References for P slices           : 5
+ References for B slices (L0, L1)  : 5, 1
+ Sequence type                     : IPPP (QP: I 32, P 32) 
+ Entropy coding method             : CABAC
+ Profile/Level IDC                 : (100,40)
+ Motion Estimation Scheme          : EPZS
+ EPZS Pattern                      : Extended Diamond
+ EPZS Dual Pattern                 : Extended Diamond
+ EPZS Fixed Predictors             : Aggressive
+ EPZS Temporal Predictors          : Enabled
+ EPZS Spatial Predictors           : Enabled
+ EPZS Threshold Multipliers        : (1 0 2)
+ EPZS Subpel ME                    : Basic
+ EPZS Subpel ME BiPred             : Basic
+ Search range restrictions         : none
+ RD-optimized mode decision        : used
+ Data Partitioning Mode            : 1 partition 
+ Output File Format                : H.264/AVC Annex B Byte Stream Format 
+-------------------------------------------------------------------------------
+Frame     Bit/pic    QP   SnrY    SnrU    SnrV    Time(ms) MET(ms) Frm/Fld Ref  
+-------------------------------------------------------------------------------
+00000(NVB)     328 
+00000(IDR)  124232   32  41.961  42.784  41.068      1119       0    FRM    3
+00001( P )  127616   32  38.654  45.364  44.222      3401    1298    FRM    2
+00002( P )   23496   32  38.651  45.346  44.229      2219     525    FRM    2
+00003( P )  161064   32  38.885  43.805  43.643      3063    1224    FRM    2
+00004( P )   51528   32  39.319  44.700  43.895      3188    1424    FRM    2
+00005( P )   32520   32  38.672  45.480  44.625      3572    1768    FRM    2
+00006( P )   73792   32  39.135  44.370  43.411      3843    2058    FRM    2
+00007( P )  107088   32  38.092  44.337  43.581      3959    2055    FRM    2
+00008( P )   88048   32  38.664  44.200  43.419      3958    2095    FRM    2
+00009( P )   85624   32  38.761  44.143  43.361      3899    2086    FRM    2
+00010( P )   44568   32  39.336  44.449  43.641      3769    2001    FRM    2
+00011( P )   55280   32  39.003  44.356  43.572      3820    2037    FRM    2
+00012( P )    1208   32  39.040  44.662  43.884      3841    1990    FRM    2
+00013( P )    1616   32  39.651  45.819  45.071      3785    2063    FRM    2
+00014( P )   10344   32  40.059  45.660  45.193      3588    1990    FRM    2
+00015( P )   15184   32  40.129  45.277  44.967      3600    1930    FRM    2
+00016( P )    2728   32  40.062  45.388  45.188      3524    1841    FRM    2
+00017( P )    1344   32  40.065  45.601  45.438      3350    1722    FRM    2
+00018( P )    9496   32  48.844 101.067 101.067      6102    4203    FRM    2
+-------------------------------------------------------------------------------
+ Total Frames:  19 
+ LeakyBucketRate File does not exist. Using rate calculated from avg. rate 
+ Number Leaky Buckets: 8 
+     Rmin     Bmin     Fmin 
+  1605420   393382   393382 
+  2006760   272980   272980 
+  2408100   195598   195598 
+  2809440   161064   158200 
+  3210780   161064   144822 
+  3612120   161064   131444 
+  4013460   161064   124232 
+  4414800   161064   124232 
+------------------ Average data all frames  -----------------------------------
+
+ Total encoding time for the seq.  :  67.608 sec (0.28 fps)
+ Total ME time for sequence        :  34.317 sec 
+
+ Y { PSNR (dB), cSNR (dB), MSE }   : {  39.841,  39.471,   7.34427 }
+ U { PSNR (dB), cSNR (dB), MSE }   : {  47.727,  44.927,   2.09095 }
+ V { PSNR (dB), cSNR (dB), MSE }   : {  47.025,  44.134,   2.51029 }
+ Y SSIM                            : 0.9412
+ U SSIM                            : 0.9891
+ V SSIM                            : 0.9923
+
+ Total bits                        : 1017104 (I 124232, P 892544, NVB 328) 
+ Bit rate (kbit/s)  @ 30.00 Hz     : 1605.95
+ Bits to avoid Startcode Emulation : 121 
+ Bits for parameter sets           : 328 
+ Bits for filler data              : 0 
+
+-------------------------------------------------------------------------------
+Exit JM 18 (FRExt) encoder ver 18.5 
