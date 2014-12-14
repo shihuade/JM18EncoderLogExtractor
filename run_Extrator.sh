@@ -88,7 +88,60 @@ runGetSequenceList()
 
 runGetPerformanceInfoFromLogFile()
 {
-		
+	if [ ! $# -eq 1 ]
+	then
+		echo "usage: runGetPerformanceInfoFromLogFile \${LogFile}"
+		return 1
+	fi
+
+	local LogFile=$1
+	local BitRate="NULL"
+	local PSNR_Y="NULL"
+	local EncTime="NULL"
+	local EncFPS="NULL"
+	local PerFormance="NULL NULL NULL NULL"
+	
+	if [ ! -e ${Logfile} ]
+	then
+		echo "Log file can not be found,please double check!"
+		echo "Log file: ${LogFile}"
+		return 1
+	fi
+
+	while read line
+	do
+		if [[ "${line}"  =~ "Bit rate (kbit/s)" ]]
+		then
+			#echo $line
+			#Bit rate (kbit/s)  @ 30.00 Hz     : 2258.41
+			
+			BitRate=`echo $line | awk 'BEGIN {FS="[:\t\r]"} {print $2}'`
+			BitRate=`echo $BitRate | awk 'BEGIN {FS="[\t\r]"}  {print $1}'`
+			#echo "BitRate is ${BitRate}"
+
+		elif [[ "${line}"  =~ "Y { PSNR (dB)" ]]
+		then
+			#echo $line
+			#Y { PSNR (dB), cSNR (dB), MSE }   : {  42.041,  41.042,   5.11529 }
+			PSNR_Y=`echo $line | awk 'BEGIN {FS=": {"} {print $2}'`
+			PSNR_Y=`echo $PSNR_Y | awk 'BEGIN {FS=","} {print $1}'`
+		elif [[ "${line}"  =~ "Total encoding time" ]]
+		then
+			#echo $line
+			#Total encoding time for the seq.  :  68.950 sec (0.28 fps)
+			EncTime=`echo $line | awk 'BEGIN {FS=":"} {print $2}'`
+			EncTime=`echo $EncTime | awk 'BEGIN {FS="sec"} {print $1}'`
+			#echo "EncTime is ${EncTime}"
+			EncFPS=`echo $line | awk 'BEGIN {FS="("} {print $2}'`
+			EncFPS=`echo $EncFPS | awk 'BEGIN {FS="fps"} {print $1}'`
+			#echo "EncFPS is ${EncFPS}"
+		fi
+
+	done <${LogFile}
+	
+	#echo "performance info is:"
+	PerFormance="${BitRate} ${PSNR_Y} ${EncTime} ${EncFPS}"
+	echo "${PerFormance}"
 	return 0	
 }
 
@@ -140,12 +193,14 @@ runGetSequencePerformanceInfo()
 				aFPSList[$i]="NULL"
 				aEncoderTimeList[$i]="NULL"
 			else
-				aPerFormanceInfo=(NULL NULL NULL NULL)
-				#aPerFormanceInfo=(`runGetPerformanceInfoFromLogFile ${LogFile}`)
+				#aPerFormanceInfo=(NULL NULL NULL NULL)
+				aPerFormanceInfo=(`runGetPerformanceInfoFromLogFile ${LogFile}`)
+				#runGetPerformanceInfoFromLogFile ${LogFile}
 
 				aBitRateList[$i]=${aPerFormanceInfo[0]}
 				aPSNRList[$i]=${aPerFormanceInfo[1]}
-				aFPSList[$i]=${aPerFormanceInfo[2]}
+				aEncoderTimeList[$i]=${aPerFormanceInfo[2]}
+				aFPSList[$i]=${aPerFormanceInfo[3]}
 			fi
 		done
 					
